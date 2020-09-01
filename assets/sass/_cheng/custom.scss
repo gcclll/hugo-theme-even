@@ -1,7 +1,8 @@
 .post-content {
   h2,
   h3,
-  h4 {
+  h4,
+  h5 {
     &:before {
       position: relative;
       left: 0;
@@ -22,27 +23,36 @@
   h4:before {
     content: "4";
   }
-}
 
-// span 配置
-span {
-  .tags > span {
-    visibility: hidden;
+  h5:before {
+    content: "5";
   }
-  &.todo {
-    color: #ffffff;
-    font-size: 18px;
-    background-color: #d72c35;
-    border-radius: 2px;
-    padding: 0 5px;
 
-    &.done {
-      background-color: #76d924;
-      color: black;
+  // span 配置
+  span {
+    .tags > span {
+      visibility: hidden;
+    }
+    &.todo {
+      color: #ffffff;
+      font-size: 18px;
+      background-color: #d72c35;
+      border-radius: 2px;
+      padding: 0 5px;
+
+      &.done {
+        background-color: #76d924;
+        color: black;
+      }
     }
   }
-}
 
-strong {
-  color: darkorchid;
+  strong {
+    color: darkorchid;
+  }
+
+  // checkbox
+  li.checked:before {
+    content: "";
+  }
 }
