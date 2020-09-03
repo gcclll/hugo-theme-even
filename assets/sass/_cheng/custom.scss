@@ -1,31 +1,11 @@
+@import "./effect.scss";
+
 .post-content {
   h2,
   h3,
   h4,
   h5 {
-    &:before {
-      position: relative;
-      left: 0;
-      top: 0.2rem;
-      font-size: 0.8rem;
-      color: blueviolet;
-    }
-  }
-
-  h2:before {
-    content: "2";
-  }
-
-  h3:before {
-    content: "3";
-  }
-
-  h4:before {
-    content: "4";
-  }
-
-  h5:before {
-    content: "5";
+    @include my-title-style;
   }
 
   // span 配置
