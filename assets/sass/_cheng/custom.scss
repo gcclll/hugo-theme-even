@@ -1,5 +1,11 @@
 @import "./effect.scss";
 
+@mixin todo-done {
+  font-size: 18px;
+  border-radius: 2px;
+  padding: 0 5px;
+}
+
 .post-content {
   h2,
   h3,
@@ -15,15 +21,19 @@
     }
     &.todo {
       color: #ffffff;
-      font-size: 18px;
       background-color: #d72c35;
-      border-radius: 2px;
-      padding: 0 5px;
+      @include todo-done;
 
       &.done {
         background-color: #76d924;
         color: black;
       }
+    }
+
+    &.done {
+      @include todo-done;
+      background-color: #76d924;
+      color: black;
     }
   }
 
