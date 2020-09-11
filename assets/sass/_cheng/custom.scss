@@ -6,6 +6,13 @@
   padding: 0 5px;
 }
 
+.post {
+  .post-toc {
+    visibility: hidden;
+    width: 300px;
+  }
+}
+
 .post-content {
   h2,
   h3,
