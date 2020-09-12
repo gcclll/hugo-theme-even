@@ -6,6 +6,12 @@
   padding: 0 5px;
 }
 
+#main {
+  section.archive {
+    max-width: 650px;
+  }
+}
+
 .post {
   .post-toc {
     width: 300px;
