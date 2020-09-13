@@ -14,6 +14,20 @@
   {{ if .Site.Params.fancybox }}<script type="text/javascript" src="{{ "lib/fancybox/jquery.fancybox-3.1.20.min.js" | relURL }}"></script>{{ end }}
 {{- end -}}
 
+<!-- algolia search -->
+{{- if .Site.Params.algolia.appId -}}
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script>
+    docsearch({
+    apiKey: {{ .Site.Params.algolia.searchOnlyKey }},
+    indexName: {{ .Site.Params.algolia.indexName }},
+    appId: {{ .Site.Params.algolia.appId }},
+    inputSelector: '.docsearch-input',
+    debug: false,
+    });
+</script>
+{{- end -}}
+
 <!-- timeago.JS -->
 {{- if and (or .Params.enableOutdatedInfoWarning (and .Site.Params.outdatedInfoWarning.enable (ne .Params.enableOutdatedInfoWarning false))) (or .IsPage .IsHome) }}
   {{- if .Site.Params.publicCDN.enable }}

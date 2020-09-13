@@ -15,5 +15,10 @@
         <a class="menu-item-link" href="{{ .URL | safeURL }}">{{ .Name }}</a>
       </li>
     {{- end }}
+    {{- if .Site.Params.algolia.appId -}}
+      <li id="search">
+        <input type="search" class="docsearch-input" placeholder="Search" />
+      </li> 
+    {{- end -}}
   </ul>
 </nav>
