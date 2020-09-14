@@ -16,8 +16,30 @@
   }
 }
 
+@keyframes increaseWidth {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 #search {
   list-style: none;
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+
+  img {
+    width: 16px;
+    cursor: pointer;
+  }
+
+  .docsearch-input {
+    animation: increaseWidth .2s ease-in-out;
+    border: 1px solid #d4237a;
+  }
 }
 
 #main {

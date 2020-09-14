@@ -17,7 +17,8 @@
     {{- end }}
     {{- if .Site.Params.algolia.appId -}}
       <li id="search">
-        <input type="search" class="docsearch-input" placeholder="Search" />
+        <img class="icon" src="/img/search.png"/>
+        <input type="search" class="docsearch-input" placeholder="Search" style="display:none;" />
       </li> 
     {{- end -}}
   </ul>
