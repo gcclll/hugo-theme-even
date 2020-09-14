@@ -34,10 +34,14 @@
   img {
     width: 16px;
     cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+      transform: scale(1.5);
+    }
   }
 
   .docsearch-input {
-    animation: increaseWidth .2s ease-in-out;
+    animation: increaseWidth 0.2s ease-in-out;
     border: 1px solid #d4237a;
   }
 }
