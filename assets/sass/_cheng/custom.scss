@@ -152,7 +152,7 @@
   }
 
   // src block fold/open
-  .highlight {
+  .highlight-wrapper {
     &.fold {
       color: #b1b1b1;
       background: #f4efe1;
@@ -165,8 +165,12 @@
       }
 
       &::before {
-        content: "Code";
+        content: "Code...";
         padding-left: 0.5rem;
+      }
+
+      .btn {
+        top: 0;
       }
     }
   }

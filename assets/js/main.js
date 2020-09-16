@@ -20,50 +20,52 @@ if (window.hljs) {
 // copy codes
 // based on https://xinyo.org/archives/66226
 
-function fold() {
-  var $hl = $(".highlight");
-  if (window.g_need_fold === 1) {
-    // 代码需要折叠
-    $hl.addClass("fold");
-    $hl.on("click", function () {
-      if ($hl._fold) {
-        $hl.removeClass("fold");
-      } else {
-        $hl.addClass("fold");
-      }
-      $hl._fold = !$hl._fold;
-    });
-  }
+function toggleFoldName(fold) {
+  return fold ? "展开" : "折叠";
 }
 
-function toggleFoldName(el) {
-  return el._fold ? "展开" : "折叠";
+function fold(el, btn) {
+  var fn = el._fold ? "removeClass" : "addClass";
+  el._fold = !el._fold;
+  el[fn]("fold");
+  $(btn).text(toggleFoldName(el._fold));
 }
 
 function addCopyButton() {
   //用 div 包裹 figure 便于定位
   $(".src .highlight").wrap('<div class="highlight-wrapper"></div>');
   //添加复制按钮
-  var $hl = $(".highlight");
-  fold(); // 代码折叠
+  var $hls = $(".highlight"),
+    $hlw = $(".highlight-wrapper");
   let copyBtnTpl = "";
   if (window.g_need_fold === 1) {
-    $hl._fold = true;
+    $hlw.each(function () {
+      var parent = $(this);
+      parent._fold = true;
+      parent.on("click", function (e) {
+        if (parent.find(".fold-code").get(0) === e.target) {
+          fold(parent, e.target);
+        }
+      });
+    });
     copyBtnTpl =
-      '<div class="fold-code btn btn-outline-secondary fold">' +
-      toggleFoldName($hl) +
+      '<div class="fold-code btn btn-outline-secondary">' +
+      toggleFoldName(true) +
       "</div>";
+    $hlw.addClass("fold");
   }
-  $hl.before(
+  $hls.before(
     copyBtnTpl + '<div class="copy-code btn btn-outline-secondary">复制</div>'
   );
 
-  $(".fold-code").on("click", function () {
-    var fn = $hl._fold ? "removeClass" : "addClass";
-    $hl._fold = !$hl._fold;
-    $(this).text(toggleFoldName($hl));
-    $hl[fn]("fold");
-  });
+  // $(".fold-code").on("click", function (e) {
+  // var el = $(e.target).siblings(".highlight");
+  // var fn = el._fold ? "removeClass" : "addClass";
+  // el._fold = !el._fold;
+  // el[fn]("fold");
+  // $(this).text(toggleFoldName(el));
+  // console.log(el, "fold 2");
+  // });
 
   //为复制按钮添加click事件
   $(".copy-code").on("click", function () {
