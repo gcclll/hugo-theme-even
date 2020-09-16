@@ -150,4 +150,24 @@
   li.checked:before {
     content: "";
   }
+
+  // src block fold/open
+  .highlight {
+    &.fold {
+      color: #b1b1b1;
+      background: #f4efe1;
+      height: 2rem;
+      line-height: 2rem;
+      cursor: pointer;
+      .chroma {
+        height: 0;
+        overflow: hidden;
+      }
+
+      &::before {
+        content: "Code";
+        padding-left: 0.5rem;
+      }
+    }
+  }
 }

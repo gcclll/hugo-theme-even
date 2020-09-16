@@ -16,7 +16,8 @@ code {
   position: relative;
 }
 
-.copy-code {
+.copy-code,
+.fold-code {
   position: absolute;
   right: 0;
   z-index: 2;
@@ -25,7 +26,12 @@ code {
   border-radius: 5px !important;
 }
 
-.copy-code:hover {
+.fold-code {
+  right: 40px;
+}
+
+.copy-code:hover,
+.fold-code:hover {
   cursor: pointer;
 }
 

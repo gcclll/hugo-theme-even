@@ -20,13 +20,50 @@ if (window.hljs) {
 // copy codes
 // based on https://xinyo.org/archives/66226
 
+function fold() {
+  var $hl = $(".highlight");
+  if (window.g_need_fold === 1) {
+    // 代码需要折叠
+    $hl.addClass("fold");
+    $hl.on("click", function () {
+      if ($hl._fold) {
+        $hl.removeClass("fold");
+      } else {
+        $hl.addClass("fold");
+      }
+      $hl._fold = !$hl._fold;
+    });
+  }
+}
+
+function toggleFoldName(el) {
+  return el._fold ? "展开" : "折叠";
+}
+
 function addCopyButton() {
   //用 div 包裹 figure 便于定位
   $(".src .highlight").wrap('<div class="highlight-wrapper"></div>');
   //添加复制按钮
-  $(".highlight").before(
-    '<div class="copy-code btn btn-outline-secondary">复制</div>'
+  var $hl = $(".highlight");
+  fold(); // 代码折叠
+  let copyBtnTpl = "";
+  if (window.g_need_fold === 1) {
+    $hl._fold = true;
+    copyBtnTpl =
+      '<div class="fold-code btn btn-outline-secondary fold">' +
+      toggleFoldName($hl) +
+      "</div>";
+  }
+  $hl.before(
+    copyBtnTpl + '<div class="copy-code btn btn-outline-secondary">复制</div>'
   );
+
+  $(".fold-code").on("click", function () {
+    var fn = $hl._fold ? "removeClass" : "addClass";
+    $hl._fold = !$hl._fold;
+    $(this).text(toggleFoldName($hl));
+    $hl[fn]("fold");
+  });
 
   //为复制按钮添加click事件
   $(".copy-code").on("click", function () {
