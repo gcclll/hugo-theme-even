@@ -28,7 +28,7 @@ function fold(el, btn) {
   var fn = el._fold ? "removeClass" : "addClass";
   el._fold = !el._fold;
   el[fn]("fold");
-  $(btn).text(toggleFoldName(el._fold));
+  btn.text(toggleFoldName(el._fold));
 }
 
 function addCopyButton() {
@@ -37,35 +37,25 @@ function addCopyButton() {
   //添加复制按钮
   var $hls = $(".highlight"),
     $hlw = $(".highlight-wrapper");
-  let copyBtnTpl = "";
   if (window.g_need_fold === 1) {
     $hlw.each(function () {
       var parent = $(this);
-      parent._fold = true;
-      parent.on("click", function (e) {
-        if (parent.find(".fold-code").get(0) === e.target) {
-          fold(parent, e.target);
-        }
-      });
-    });
-    copyBtnTpl =
-      '<div class="fold-code btn btn-outline-secondary">' +
-      toggleFoldName(true) +
-      "</div>";
-    $hlw.addClass("fold");
-  }
-  $hls.before(
-    copyBtnTpl + '<div class="copy-code btn btn-outline-secondary">复制</div>'
-  );
+      if (parent.height() <= 450) return;
+      var btn = $(
+        '<div class="fold-code btn btn-outline-secondary">' +
+          toggleFoldName(true) +
+          "</div>"
+      );
 
-  // $(".fold-code").on("click", function (e) {
-  // var el = $(e.target).siblings(".highlight");
-  // var fn = el._fold ? "removeClass" : "addClass";
-  // el._fold = !el._fold;
-  // el[fn]("fold");
-  // $(this).text(toggleFoldName(el));
-  // console.log(el, "fold 2");
-  // });
+      btn.insertBefore(parent.children().get(0));
+      parent._fold = true;
+      btn.on("click", function () {
+        fold(parent, $(this));
+      });
+      parent.addClass("fold");
+    });
+  }
+  $hls.before('<div class="copy-code btn btn-outline-secondary">复制</div>');
 
   //为复制按钮添加click事件
   $(".copy-code").on("click", function () {
