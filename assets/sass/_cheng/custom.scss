@@ -121,6 +121,10 @@
   }
   // span 配置
   span {
+    &.timestamp {
+      color: darkorchid;
+      text-decoration: underline;
+    }
     .tags > span {
       visibility: hidden;
     }
