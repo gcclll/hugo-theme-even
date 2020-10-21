@@ -69,10 +69,6 @@
     vertical-align: middle;
     margin-top: -14px;
   }
-
-  .logo.hover-rotate:before {
-    animation: rotate 5s linear infinite;
-  }
 }
 
 .post {
@@ -97,28 +93,10 @@
     &:after {
       visibility: hidden;
     }
-    &.hover-rotate:after {
-      visibility: visible;
-      position: absolute;
-      right: 40px;
-      color: red;
-      animation: rotate 0.2s linear infinite;
-    }
 
     cursor: pointer;
   }
 
-  h2:after {
-    content: "||";
-  }
-
-  h3:after {
-    content: "|||";
-  }
-
-  h4:after {
-    content: "|||";
-  }
   // span 配置
   span {
     &.timestamp {
@@ -181,5 +159,11 @@
     .btn-outline-secondary {
       border-color: transparent;
     }
+  }
+
+  // header more icon
+  .outline-3 > h3 > img {
+    height: 2rem;
+    float: right;
   }
 }

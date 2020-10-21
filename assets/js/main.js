@@ -4,6 +4,7 @@ $(document).ready(function () {
   Even.toc();
   Even.fancybox();
   addCopyButton();
+  foldChapters();
 });
 
 Even.responsiveTable();
@@ -19,6 +20,16 @@ if (window.hljs) {
 
 // copy codes
 // based on https://xinyo.org/archives/66226
+function foldChapters() {
+  if (window.g_fold_chapter !== 1) return;
+  $(".post-content .outline-3>div").hide();
+  $(".post-content .outline-3>h3").append(
+    '<img class="more" src="/img/more.svg"/>'
+  );
+  $(".post-content .outline-3>h3>img.more").click(function () {
+    $(this).parent().siblings().toggle();
+  });
+}
 
 function toggleFoldName(fold) {
   return fold ? "展开" : "折叠";
