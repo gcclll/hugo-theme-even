@@ -84,10 +84,7 @@
     text-decoration: underline;
   }
 
-  h2,
-  h3,
-  h4,
-  h5 {
+  h2 {
     @include my-title-style;
 
     &:after {
