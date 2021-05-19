@@ -33,6 +33,9 @@ code {
 .copy-code:hover,
 .fold-code:hover {
   cursor: pointer;
+  pre > code {
+    display: block;
+  }
 }
 
 // highlight.js
