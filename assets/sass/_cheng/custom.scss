@@ -1,10 +1,29 @@
 @import "./effect.scss";
+@import "./block.scss";
 
 @mixin todo-done {
   font-size: 18px;
   border-radius: 2px;
   padding: 0 5px;
 }
+
+@mixin heads() {
+  @for $i from 1 through 6 {
+    h#{$i} {
+      @include my-title-style;
+
+      &:after {
+        visibility: hidden;
+      }
+
+      cursor: pointer;
+      font-weight: 900 - $i * 100 !important;
+      font-size: (2 - ($i - 1) / 10) rem !important;
+    }
+  }
+}
+
+@include heads();
 
 @keyframes rotate {
   0% {
@@ -82,18 +101,6 @@
 .post-content {
   a {
     text-decoration: underline;
-  }
-
-  h2,
-  h3,
-  h4 {
-    @include my-title-style;
-
-    &:after {
-      visibility: hidden;
-    }
-
-    cursor: pointer;
   }
 
   // span 配置
