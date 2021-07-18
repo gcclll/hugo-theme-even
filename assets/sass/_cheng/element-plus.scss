@@ -1,0 +1,30 @@
+@mixin row_flag($name, $bgcolor, $color) {
+  &.#{$name} {
+    background-color: $bgcolor;
+    color: $color;
+    a > .el-link--inner {
+      color: $color;
+    }
+  }
+}
+
+.post-content {
+  .el-table__row {
+    &.flag {
+      padding: 2px 5px;
+    }
+    @include row_flag("DONE", lightgray, black);
+    @include row_flag("DOING", green, white);
+    @include row_flag("PENDING", #dc79ef, white);
+    @include row_flag("WAITING", yellow, black);
+  }
+
+  .table-wrapper > table {
+    margin: 0;
+  }
+
+  .el-table__body,
+  .el-table__header {
+    width: 100% !important;
+  }
+}
