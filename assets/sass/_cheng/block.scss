@@ -24,6 +24,7 @@
   @include gen-block("warn", rgba(255, 229, 100, 0.3), #6b5900, #e7c000);
   @include gen-block("danger", #ffe6e6, #4d0000, #c00);
   @include gen-block("tip", #f3f5f7, #000000, #42b983);
+  @include gen-block("success", #f3f5f7, #000000, #42b983);
   @include gen-block("comment", #f3f5f7, #6a737d, #e0e3e6);
   .comment-block {
     padding: 0.5rem;
