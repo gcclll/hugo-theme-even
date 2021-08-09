@@ -1,0 +1,34 @@
+@mixin todo-done {
+  font-size: 18px;
+  border-radius: 2px;
+  padding: 0 5px;
+}
+
+.post-content {
+  // span 配置
+  span {
+    &.timestamp {
+      color: darkorchid;
+      text-decoration: underline;
+    }
+    .tags > span {
+      visibility: hidden;
+    }
+    &.todo {
+      color: #ffffff;
+      background-color: #d72c35;
+      @include todo-done;
+
+      &.done {
+        background-color: #76d924;
+        color: black;
+      }
+    }
+
+    &.done {
+      @include todo-done;
+      background-color: #76d924;
+      color: black;
+    }
+  }
+}
